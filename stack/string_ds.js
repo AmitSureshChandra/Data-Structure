@@ -14,7 +14,7 @@ Stack.prototype.pop = function(){
 }
 
 Stack.prototype.size = function(){
-    return this.storage.length ?? 0;
+    return this.storage.split('***').filter(i => i).length ?? 0;
 }
 
 var myWeeklyMenu = new Stack();
