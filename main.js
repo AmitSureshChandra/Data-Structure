@@ -37,8 +37,6 @@ inquirer.prompt({
         })
 })
 
- */
-
 // to run binary search
 
 const { binarySearch } = require('./searching/binary_search')
@@ -61,3 +59,5 @@ inquirer.prompt({
                 console.log(`${ search_val } found at index ${index}`)
             })
     })
+*/
+

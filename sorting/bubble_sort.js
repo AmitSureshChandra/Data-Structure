@@ -1,6 +1,3 @@
-// let arr = [22,23,25,26,35,39,42,45,48,49];
-let arr = [5,4,3];
-
 let bubbleSort = (arr) => {
     let array = arr;
     for (let i = 0; i< array.length; i++){
@@ -15,4 +12,6 @@ let bubbleSort = (arr) => {
     return array;
 }
 
-console.log(`final ${bubbleSort(arr)}`);
+module.exports = {
+    bubble_sort: bubbleSort
+}
