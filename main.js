@@ -1,6 +1,6 @@
 // linear search
 const { linear_search } = require('./searching/linear_search')
-const { inquirer } = require('inquirer')
+const inquirer = require('inquirer')
 
 inquirer.prompt({
     type: 'list',
