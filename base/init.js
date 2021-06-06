@@ -4,10 +4,6 @@ const readLine = require('readline').createInterface({
     output: process.stdout
 })
 
-// read using inquirer
-const inquirer = require('inquirer')
-
 module.exports = {
-    readLine,
-    inquirer
+    readLine
 }
