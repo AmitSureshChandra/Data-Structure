@@ -20,3 +20,7 @@ let binarySearch = (array,searchValue,start,end) => {
         return binarySearch(array,searchValue,start,mid-1)
     }
 }
+
+module.exports = {
+    binarySearch: binarySearch
+}
