@@ -1,7 +1,4 @@
-
-/*
-// to run linear search
-
+// linear search
 const { linear_search } = require('./searching/linear_search')
 const inquirer = require('inquirer')
 
@@ -37,27 +34,4 @@ inquirer.prompt({
         })
 })
 
- */
-
-// to run binary search
-
-const { binarySearch } = require('./searching/binary_search')
-const inquirer = require('inquirer')
-
-inquirer.prompt({
-    message: 'Enter array element seperated by spaces : ',
-    type: 'input',
-    name: 'array_string'
-})
-.then(({ array_string }) => {
-    inquirer.prompt({
-        message: 'Enter the value to be searched: ',
-        type: 'input',
-        name: 'search_val'
-    })
-        .then(({ search_val }) => {
-            let array = array_string.split(" ")
-            let index = binarySearch(array, search_val,0 ,array.length)
-            console.log(`${ search_val } found at index ${index}`)
-        })
-})
+// binary search
