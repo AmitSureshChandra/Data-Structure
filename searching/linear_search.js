@@ -1,12 +1,26 @@
-// let arr = [22,1,324,123,21,231,65,123,65765];
-let arr = [22,23,25,26,35,39,42,45,48,49];
-let searchValue = 49;
+// for reference
 
-let linearSearch = (array, searchVal) => {
-    for (let i=0;i<array.length;i++){
-        if (array[i] === searchVal){
-            return i;
-        }
+let linearSearch = (array, searchVal, multi = false) => {
+
+    let indexes = [];
+
+    array.forEach((val, index, arr) => {
+        if (val === searchVal) indexes.push(index);
+    })
+
+    if (indexes.length === 0) {
+        return -1
     }
-    return -1;
+
+    if (multi) {
+        return indexes
+    }
+
+    return indexes[0];
 }
+
+module.exports = {
+    linear_search: linearSearch
+}
+
+
