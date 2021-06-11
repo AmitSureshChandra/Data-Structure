@@ -80,7 +80,11 @@ arrayOperation.prototype.pop = function (){
 
 // return index of item
 arrayOperation.prototype.indexOf = function (item){
-
+    for (let i = 0; i < this.size(); i++) {
+        if (this.valueAt(i) === item )
+            return i;
+    }
+    return -1;
 }
 
 // for internal use
@@ -90,15 +94,11 @@ arrayOperation.prototype.deleteAt = function (pos){
 
 
 arrayOperation.prototype.removeItem = function (item){
-
+    let index = this.indexOf(item)
+    if (index === -1) {
+        throw "Item not found in array"
+    }
+    this.deleteAt(index);
 }
 
-arr = new arrayOperation()
-arr.insert(0,20)
-arr.unshift(30)
-console.log(arr.valueAt(0))
-try {
-    console.log(arr.valueAt(5))
-}catch (e){
-    console.log({e})
-}
+let obj = new arrayOperation()
