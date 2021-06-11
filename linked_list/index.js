@@ -26,15 +26,40 @@ linkList.prototype.size = function() {
     return this.length
 }
 
-linkList.prototype.unshift(node){
+linkList.prototype.incrementLength = function() {
+    return this.length++
+}
+
+linkList.prototype.unshift = function(node){
+
+    this.incrementLength()
+
+    if (this.size() == 1) {
+        this.node = node
+        return
+    }
+
+    this.node.prev = node
     node.next = this.node
     this.node = node
 }
 
-linkList.prototype.shift(){
+linkList.prototype.shift = function(){
     this.node = this.node.next
+    this.node.prev = null
 }
 
-linkList.prototype.addNode(pos, node){
+linkList.prototype.addNode = function(pos, node){
 
 }
+
+let linklist = new linkList()
+
+node = new Node(20)
+
+linklist.unshift(node)
+linklist.unshift(new Node(-1))
+linklist.unshift(new Node(-111))
+linklist.unshift(new Node(-11111))
+linklist.shift()
+console.log(linklist);
