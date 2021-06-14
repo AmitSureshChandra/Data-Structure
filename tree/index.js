@@ -30,6 +30,10 @@ class Node {
 
 
 class BST{
+
+    // possible modes 'LVR' , 'RVL', & etc
+    static DFS_MODE = 'LVR'
+
     constructor(root = null){
         this.root = root
     }
@@ -39,10 +43,26 @@ class BST{
             throw 'Only single unique key is possible'
         }
     }
+
+    dfsTraversal(node = null){
+        if (!node) {
+            node = this.root
+        }
+
+        if (node.l) {
+            this.dfsTraversal(node.l)
+        }
+
+        console.log(node.data);
+        
+        if (node.r) {
+            this.dfsTraversal(node.r)
+        }
+    }
     
     add(newNode, node = null){
-        if (!node && !this.root) {
-            this.root = node
+        if (!this.root) {
+            this.root = newNode
             return
         }
 
@@ -73,4 +93,5 @@ bst = new BST(new Node(-1))
 bst.add(new Node(10))
 bst.add(new Node(-10))
 bst.add(new Node(100))
+bst.dfsTraversal()
 console.dir(bst, {depth: 4});
