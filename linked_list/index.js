@@ -54,19 +54,50 @@ linkList.prototype.shift = function(){
     this.node.prev = null
 }
 
-linkList.prototype.lastNode = function () {
+linkList.prototype.getLastNode = function () {
     let currentNode = this.node
-    for (let index = 0; index < this.size() -2; index++) {
+    for (let index = 0; index < this.size() -1; index++) {
         currentNode = currentNode.next
     }
     return currentNode;
 }
 
 linkList.prototype.push = function(node){
+    let lastNode = this.getLastNode()
     this.incrementLength()
-    let lastNode = this.lastNode()
+    console.log(lastNode);
     lastNode.next = node
     node.prev = lastNode
+}
+
+
+linkList.prototype.pop = function(node){
+    let lastNode = this.getLastNode()
+    this.decrementLength()
+    lastNode.prev.next = null
+}
+
+linkList.prototype.removeAt = function(pos){
+    if ( pos >= this.size()) {
+        throw "Index Out Of Bound"
+    }
+    if (pos === 0) {
+        this.shift()
+        return
+    }
+    if (pos === this.size() - 1) {
+        this.pop()
+        return
+    }
+
+    let currentNode = this.node
+    for (let index = 0; index < pos - 1; index++) {
+        currentNode = currentNode.next
+        console.log('in for');
+    }
+    currentNode.next.next.prev = currentNode
+    currentNode.next = currentNode.next.next
+    this.decrementLength()
 }
 
 linkList.prototype.addNode = function(pos, node){
@@ -105,7 +136,6 @@ linklist.unshift(node)
 linklist.unshift(new Node(-1))
 linklist.unshift(new Node(-111))
 linklist.unshift(new Node(-11111))
-linklist.shift()
-
-linklist.addNode(3,new Node(3));
-console.dir(linklist, {depth: 4});
+linklist.removeAt(2)
+console.log(linklist.getLastNode().data);
+console.dir(linklist, {depth: 5});
