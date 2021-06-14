@@ -5,6 +5,9 @@ function Node(data = null, next = null, prev = null) {
 }
 
 Node.prototype.setData = function (data) {
+    if (!data) {
+        throw "Please enter valid data"
+    }
     this.data = data
 }
 
