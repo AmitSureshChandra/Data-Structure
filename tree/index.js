@@ -1,5 +1,10 @@
 // BST - Binary Search Tree
 
+
+/**
+ * 
+ * Node class for holding data, left & right for node in tree
+ */
 class Node {
 
     constructor(data = null, r = null, l = null){
@@ -33,9 +38,11 @@ class BST{
 
     // possible modes 'LVR' , 'RVL', & etc
     static DFS_MODE = 'LVR'
-
+    
     constructor(root = null){
         this.root = root
+        this.stack = []
+        this.queue = []
     }
 
     checkUniqueKey(node1,node2){
@@ -44,7 +51,43 @@ class BST{
         }
     }
 
-    dfsTraversal(node = null){
+    bfsTraversalWithQueue(node){
+        if (!node) {
+            node = this.root
+            this.queue.push(node)
+        }
+        
+        if (node.l) {
+            this.queue.push(node.l)
+            this.bfsTraversalWithQueue(node.l)
+        }
+        console.log(this.queue.shift()?.data);
+
+        if (node.r) {
+            this.queue.push(node.r)
+            this.bfsTraversalWithQueue(node.r)
+        }
+    }
+
+    dfsTraversalWithStack(node){
+        if (!node) {
+            node = this.root
+            this.stack.push(node)
+        }
+        
+        if (node.l) {
+            this.stack.push(node.l)
+            this.dfsTraversalWithStack(node.l)
+        }
+        console.log(this.stack.pop()?.data);
+
+        if (node.r) {
+            this.stack.push(node.r)
+            this.dfsTraversalWithStack(node.r)
+        }
+    }
+
+    dfsTraversal(node = null, fn){
         if (!node) {
             node = this.root
         }
@@ -88,10 +131,12 @@ class BST{
     }
 }
 
-
-bst = new BST(new Node(-1))
+let name = 'amit'
+let bst = new BST(new Node(-1))
 bst.add(new Node(10))
 bst.add(new Node(-10))
 bst.add(new Node(100))
-bst.dfsTraversal()
-console.dir(bst, {depth: 4});
+// bst.dfsTraversal()
+// bst.dfsTraversalWithStack()
+bst.bfsTraversalWithQueue()
+// console.dir(bst, {depth: 4});
