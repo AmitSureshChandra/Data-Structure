@@ -27,10 +27,6 @@ class Node {
     setL(l) {
         this.l = l
     }
-
-    setL(l) {
-        this.l = l
-    }
 }
 
 
